@@ -1,0 +1,34 @@
+.temperatures{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    color: #fff;
+}
+
+.mainTemperature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+    font-size: 7rem;
+}
+
+.maxTemperature, .minTemperature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.maxTemperature h3, .minTemperature h3{
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.maxMinTemperature{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
