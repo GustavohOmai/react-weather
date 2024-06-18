@@ -1,6 +1,8 @@
 import React from "react"
 import './index.css'
 import Date from "../date";
+import arrowUp from "../../assets/arrowUp.svg"
+import arrowDown from "../../assets/arrowDown.svg"
 
 function Temperature() {
 
@@ -15,7 +17,7 @@ function Temperature() {
                                 26°C
                             </h3>
                             <span>
-                                ICON
+                                <img src={arrowUp} alt="Arrow Up" />
                             </span>
                         </div>
                         <div className="minTemperature">
@@ -23,7 +25,7 @@ function Temperature() {
                                 18°C
                             </h3>
                             <span>
-                                ICON
+                                <img src={arrowDown} alt="Arrow Down" />
                             </span>
                         </div>
                     </div>

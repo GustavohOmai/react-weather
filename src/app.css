@@ -8,3 +8,25 @@
 .bg-gradient{
     background: linear-gradient(106deg, #2F184D 0%, #AD00FF 100%);
 }
+
+.mainInfos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20%;
+}
+
+.mainCard {
+    width: 70%;
+    border: 1px solid #c7c7c7;
+    border-radius: 20px;
+    padding: 30px;
+    background: #c7c7c738;
+    backdrop-filter: blur(10px);
+}
+
+.nextDays{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+}
