@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 import './index.css'
-import Date from "../date";
 import arrowUp from "../../assets/arrowUp.svg"
 import arrowDown from "../../assets/arrowDown.svg"
+import Date from "../date";
+
 
 function Temperature() {
     const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY
