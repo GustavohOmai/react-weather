@@ -6,14 +6,7 @@ import arrowDown from "../../assets/arrowDown.svg"
 
 function Temperature() {
 
-    const apiKey: string = import.meta.env.EACT_APP_API_KEY
-
-    console.log(import.meta.env.REACT_APP_API_KEY);
-
-    console.log(import.meta.env.VITE_SOME_KEY)
-
-    console.log(import.meta.env.MODE);
-    
+    const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY
 
     const fetchTemperature = async () => {
         return await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Paris`)

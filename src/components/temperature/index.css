@@ -25,6 +25,11 @@
     font-weight: 200;
 }
 
+.maxTemperature img, .minTemperature img{
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.5));
+}
+
+
 .maxMinTemperature{
     display: flex;
     flex-direction: column;
