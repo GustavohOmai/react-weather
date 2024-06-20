@@ -11,6 +11,10 @@ import { fetchTemperature } from "../../redux/temperatureReducer";
 
 
 const Temperature: React.FC = () => {
+
+
+
+    
     const dispatch: AppDispatch = useDispatch();
     const temperature = useSelector((state: RootState) => state.temperature.temperature);
     const maxTemperature = useSelector((state: RootState) => state.temperature.maxTemperature);

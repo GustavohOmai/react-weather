@@ -38,12 +38,33 @@ const initialState: TemperatureState = {
   forecast: [],
 };
 
+const getGeolocation = (): Promise<{ latitude: number, longitude: number }> => {
+  return new Promise((resolve, reject) => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    } else {
+      reject(new Error("Geolocalização não é suportada por este navegador."));
+    }
+  });
+};
+
 const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY;
 
 export const fetchTemperature = createAsyncThunk('temperature/fetchTemperature', async () => {
-  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Paris&days=7&aqi=no&alerts=no`);
+  const { latitude, longitude } = await getGeolocation();
+
+  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`);
   const data = await response.json();
-  console.log(data);
 
   return {
     temperature: data.current.temp_c,
