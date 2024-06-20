@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .bg-gradient{
@@ -25,8 +25,10 @@
     backdrop-filter: blur(10px);
 }
 
-.nextDays{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8%;
+
+@media screen and (max-width: 1000px) {
+    .bg-gradient{
+        background: linear-gradient(168deg, #2B9CDB 0%, #00FF6A 100%, #00FF6A 100%);
+    }
+    
 }

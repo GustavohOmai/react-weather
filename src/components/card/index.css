@@ -18,3 +18,38 @@
     width: 65%;
     text-align: center;
 }
+
+
+.weather-list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+}
+
+@media screen and (max-width: 1000px) {
+    .weather-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card{
+        width: 100%;
+        flex-direction: row;
+        height: 50px;
+        align-items: center;
+        background: #49494938;
+
+    }
+
+    .card-body{
+        border-top: 0px;
+        border-left: 1px solid #fff;
+        padding-top: 0px;
+    }
+
+    .card-header img{
+        height: 35px;
+    }
+    
+}

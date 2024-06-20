@@ -7,3 +7,9 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+@media screen and (max-width:1000px) {
+    .total {
+        display: flex;
+        flex-direction: column-reverse;
+    } 
+}

@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import './index.css'
 import arrowUp from "../../assets/arrowUp.svg"
 import arrowDown from "../../assets/arrowDown.svg"
-import Date from "../date";
+import DateComponent from "../date";
 //imports from Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, AppDispatch } from '../../redux/store'
@@ -54,7 +54,7 @@ const Temperature: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <Date />
+                <DateComponent />
             </div>
         </>
     );

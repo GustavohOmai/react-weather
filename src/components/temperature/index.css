@@ -39,3 +39,18 @@
     gap: 10px;
 }
 
+@media screen and (max-width: 1000px){
+    .mainTemperature, .loading{
+        font-size: 3rem;
+    }
+    .maxMinTemperature{
+        gap: 5px;
+    }
+    .maxTemperature img, .minTemperature img{
+        width: 15px;
+        height: 15px;
+    }
+    .mainInfos{
+        flex-direction: column;
+    }
+}

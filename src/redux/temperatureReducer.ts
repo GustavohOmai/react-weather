@@ -1,5 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+interface Condition {
+  text: string;
+  icon: string;
+}
+
+interface Day {
+  avgtemp_c: number;
+  maxtemp_c: number;
+  mintemp_c: number;
+  condition: Condition;
+}
+
+interface ForecastDay {
+  date: string;
+  date_epoch: number;
+  day: Day;
+}
+
 interface TemperatureState {
   temperature: number | null;
   maxTemperature: number | null;
@@ -7,26 +25,26 @@ interface TemperatureState {
   weatherImage: string;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
-  forecast: [],
+  forecast: ForecastDay[];
 }
 
 const initialState: TemperatureState = {
-  forecast: [],
   temperature: null,
   maxTemperature: null,
   minTemperature: null,
   weatherImage: '',
   status: 'idle',
   error: null,
-}
+  forecast: [],
+};
 
 const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY;
 
 export const fetchTemperature = createAsyncThunk('temperature/fetchTemperature', async () => {
   const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Paris&days=7&aqi=no&alerts=no`);
   const data = await response.json();
-  // console.log(data);
-    
+  console.log(data);
+
   return {
     temperature: data.current.temp_c,
     maxTemperature: data.forecast.forecastday[0].day.maxtemp_c,
@@ -51,7 +69,7 @@ export const temperatureSlice = createSlice({
         state.maxTemperature = action.payload.maxTemperature;
         state.minTemperature = action.payload.minTemperature;
         state.weatherImage = action.payload.weatherImage;
-        state.forecast = action.payload.forecast.forecastday;
+        state.forecast = action.payload.forecast;
       })
       .addCase(fetchTemperature.rejected, (state, action) => {
         state.status = 'failed';

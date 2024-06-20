@@ -1,3 +1,10 @@
 .imagemClima {
     width: 120px;
 }
+
+@media screen and (max-width: 1000px) {
+    .imagemClima {
+        width: 100px;
+        margin-top: -20px;
+    }
+}
