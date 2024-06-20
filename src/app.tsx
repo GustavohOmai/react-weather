@@ -1,8 +1,8 @@
 import React from "react";
 import Temperature from "./components/temperature";
 import WeatherImage from "./components/weatherImage";
-import Card from "./components/card";
 import './app.css';
+import CardList from "./components/card";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
               <WeatherImage />
             </div>
             <div className="nextDays">
-              <Card />
+              <CardList />
             </div>
           </div>
         </div>

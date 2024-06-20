@@ -23,11 +23,11 @@ const Temperature: React.FC = () => {
     }, [dispatch]);
 
     if (status === 'loading') {
-        return <div>Loading...</div>;
+        return <div className="loading">99.9°C</div>;
     }
 
     if (status === 'failed') {
-        return <div>Error: {error}</div>;
+        return <div className="error">Error: {error}</div>;
     }
 
     return (
