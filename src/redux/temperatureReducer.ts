@@ -63,7 +63,7 @@ const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY;
 export const fetchTemperature = createAsyncThunk('temperature/fetchTemperature', async () => {
   const { latitude, longitude } = await getGeolocation();
 
-  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`);
+  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`);
   const data = await response.json();
 
   return {
