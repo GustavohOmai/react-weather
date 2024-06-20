@@ -1,46 +1,34 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import './index.css'
 import arrowUp from "../../assets/arrowUp.svg"
 import arrowDown from "../../assets/arrowDown.svg"
 import Date from "../date";
+//imports from Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState, AppDispatch } from '../../redux/store'
+import { fetchTemperature } from "../../redux/temperatureReducer";
 
 
-function Temperature() {
-    const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY
 
-    const [temperature, setTemperature] = useState(null);
-    const [maxTemperature, setMaxTemperature] = useState(null);
-    const [minTemperature, setMinTemperature] = useState(null);
+const Temperature: React.FC = () => {
+    const dispatch: AppDispatch = useDispatch();
+    const temperature = useSelector((state: RootState) => state.temperature.temperature);
+    const maxTemperature = useSelector((state: RootState) => state.temperature.maxTemperature);
+    const minTemperature = useSelector((state: RootState) => state.temperature.minTemperature);
+    const status = useSelector((state: RootState) => state.temperature.status);
+    const error = useSelector((state: RootState) => state.temperature.error);
 
-    const fetchTemperature = async () => {
-        try {
-            const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Paris&days=1&aqi=no&alerts=no`);
-            const data = await response.json();
-            console.log(data);
-            return {
-                temperature: data.current.temp_c,
-                maxTemperature: data.forecast.forecastday[0].day.maxtemp_c,
-                minTemperature: data.forecast.forecastday[0].day.mintemp_c
-            };
-        } catch (error) {
-            console.error('Erro ao buscar temperatura:', error);
-            return null;
-        }
-    }
-    
-    
     useEffect(() => {
-        const getTemperature = async () => {
-            const result = await fetchTemperature();
-            if (result) {
-                setTemperature(result.temperature);
-                setMaxTemperature(result.maxTemperature);
-                setMinTemperature(result.minTemperature);
-            }
-        };
-        getTemperature();
-    }, []);
-    
+        dispatch(fetchTemperature());
+    }, [dispatch]);
+
+    if (status === 'loading') {
+        return <div>Loading...</div>;
+    }
+
+    if (status === 'failed') {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <>
@@ -70,6 +58,7 @@ function Temperature() {
             </div>
         </>
     );
-}
+};
+
 
 export default Temperature;
